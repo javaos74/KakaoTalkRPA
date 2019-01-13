@@ -1,0 +1,218 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="RememberTask" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="RememberTask_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="RememberTask" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Remember.exe 리멤버'" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="fdc9894c3914cbfc9421661ae3166d3f" Selector="&lt;wnd app='remember.exe' cls='Chrome_WidgetWin_1' title='리멤버 - 국민 명함앱' /&gt;">
+      <ui:WindowScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Default="OOOO" Name="FileName" />
+            </Sequence.Variables>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Remember.exe Chrome'" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="35e3a786bb94682a0b5bd61cc9084583" Selector="&lt;wnd cls='Chrome_RenderWidgetHostHWND' title='Chrome Legacy Window' /&gt;&lt;ctrl name='리멤버 - 국민 명함앱' role='document' /&gt;&lt;ctrl name='Ico add bf2242d9133d8efd049ccfda167e4cc582c370f0639e4cebf32d9e45*' role='list item' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Remember.exe Chrome'" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="c76aaa6e88e511e2fbada1810fc69d83" Selector="&lt;wnd cls='Chrome_RenderWidgetHostHWND' idx='2' title='Chrome Legacy Window' /&gt;&lt;ctrl name='리멤버 - 국민 명함앱' role='document' /&gt;&lt;ctrl idx='22' role='div' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+              <sap2010:WorkflowViewState.IdRef>Click_6</sap2010:WorkflowViewState.IdRef>
+            </ui:Click>
+            <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'Remember.exe Chrome'" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+              <ui:ClickImage.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:ClickImage.CursorPosition>
+              <ui:ClickImage.Image>
+                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEUAAABMCAYAAAA7gnrhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATMSURBVHhe7Zo5SyxBFIXHfRfEVEHEwEAFc/+AmAlGKv4CBbdEQRNBXDAQQcTIDRENFERU0MBAEwUDwT0zEgQV3Jf7OIU1dLe3p2vec8oaXh24PGemeurW17dOddW8EFl9k4XCyEJhZKEwslAYWSiMLBRGFgojC4WRhcLIQmFkoTCyUBhZKIwCoXx8fNDLyws9Pj7GdWAMGIuKAqHgy0KhUNxHRUWFGIuKAqGAMtdJvEVZWRk9Pz9/jSqyLBRGUUNJSEig9PR0yszMNDqQI3LVAgWdbW5u0unpKZ2dnRkZyG1lZYUyMjL0QMFdQKefn59fLcwTVpmDgwORq1YoJgs3zELxyEJhZKEwslAYGQ8FCeqWkVCwJD48PNDOzg6trq7SxcUFvb29aQNkHBQAOTo6oqKiItd1XV1dIikdYIyCgmSur6+ppKTEdQ0iKSmJWlpaRMXEWkZBQZV0dna62jsD12IqxVpGQXl/f6fKykpXe2ekpKQIn4n1FDIOSk1Njau9M9LS0mh/f18JCto8PT3R8vKyyCEakEZBQTJra2vCP5zXyCgsLKT7+/uv1v7C9+CUbGpqipKTk6m7u1u8VgVjFBTo9fVVrDTOaxDFxcViVQo6J5VA+vr6xDEFrsW/HR0donJUwBgHBcKgFhcXxVSqqqqi5uZmury8VAKCgaNCJBAZqL7h4WElMEZCgZAYPAaVAxgqA0HbsbExMWWcfcqAUbe1tQVOJWOhRCMMAhUwODjoOi3jAmbd29srnpj9wMQ9FAzAaarevvr7+yk7O9v1PiKS+cY1FAnEaaoysrKyaGFhQVTQ+vq6qBDn55HM1ygoSMaboJ/Qzs9U0QeAyC0BvGl7e5vy8/Nd7fzM1xgoMNPz83Pa2toK3N8gaT9ThadsbGyIz50CGPyK4K0YmG9ra6trKhkBBUD29vaotLSUUlNTaXx83BcMEvYzVUyZmZkZAYCTBJOXl+e6DqB6enrC5vvrUADk6urKdVSAu4dzFC8YJBvJVFEhQVUGMNg/RTJf5PRrUGTn3rMTBHxieno6PEgJJJKpeqeMnwAGAL1TCa/b29tFzthjaYeCxE5OTqi8vNz1uTOQ5NzcnIChaqqqQv9+5js0NES7u7t6oRwfH4soKChwfcYF2i8tLdHo6KiyqapKegxnvtXV1fqgYCAwQ5iq831EfX09jYyMUG5urut9JBmtqapKgvGaLyomMTEx/DqmUHC3vSWLX/cbGxvFFMFdn5yc9D0+QOAOqpiqqgAG5puTk8P2h4gpFC4A5ObmJrwcwkNQBagGb9toTVVVAAPQXs+SoRVKXV2d6AwwpPA3Bj0wMOCaNqiQvzFVVQEMZ74IbVCampro9vbWBURKVszs7Kx4oPtXU1WV9BhvxWiBgilzd3fHApGSYCYmJsTSjIR1CJU4Pz/vWu1iCgWm2tDQ8G3KRBLaqbb9CaEvrU+0KMvDw0PxNGuqtENBR9wu2SRZKIwsFEYWCqNfgwKjRecmBnLTenSA1Qe/7+JOmBoAgucU59N0TKHgOQWd4S6YHMhR239Dj9ewUJjACeGPQcHeBV8I0vEctbW1ypvRQChwcoAB5XgOAFHdmgRC+R9loTCyUBhZKIwsFEYWCiMLhZGFwshCYWShfBPRH+4JhbHJK6m4AAAAAElFTkSuQmCC" />
+              </ui:ClickImage.Image>
+              <ui:ClickImage.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;wnd aaname='리멤버 - 국민 명함앱' cls='Chrome_RenderWidgetHostHWND' title='Chrome Legacy Window' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:ClickImage.Target>
+            </ui:ClickImage>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Remember.exe Chrome'" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="6aa41cb30b9afcbc643cb596599425d1" Selector="&lt;wnd aaname='리멤버 - 국민 명함앱' cls='Chrome_RenderWidgetHostHWND' title='Chrome Legacy Window' /&gt;&lt;ctrl name='리멤버 - 국민 명함앱' role='document' /&gt;&lt;ctrl name='컴퓨터에서 가져오기' role='push button' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'Edit'" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[&quot;C:\Temp\&quot; + FileName + &quot;.jpg&quot;]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9b7050547789e3d4fbf5855c320dacf0" Selector="&lt;wnd app='remember.exe' cls='#32770' title='열기' /&gt;&lt;wnd ctrlid='1148' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="54e064038230fa5394e572f7bfb4e725" Selector="&lt;wnd app='remember.exe' cls='#32770' title='열기' /&gt;&lt;wnd ctrlid='1' title='열기(&amp;amp;O)' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Remember.exe Chrome'" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="eb3264e6760c27a0373c6d1c5ff419d6" Selector="&lt;wnd aaname='리멤버 - 국민 명함앱' cls='Chrome_RenderWidgetHostHWND' title='Chrome Legacy Window' /&gt;&lt;ctrl name='리멤버 - 국민 명함앱' role='document' /&gt;&lt;ctrl name='업로드' role='push button' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <Delay Duration="00:00:10" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Remember.exe Chrome'" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f3689759535efb145078fe38d99f9406" Selector="&lt;wnd aaname='리멤버 - 국민 명함앱' cls='Chrome_RenderWidgetHostHWND' title='Chrome Legacy Window' /&gt;&lt;ctrl name='리멤버 - 국민 명함앱' role='document' /&gt;&lt;ctrl name='확인' role='push button' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+          </Sequence>
+        </ActivityAction>
+      </ui:WindowScope.Body>
+    </ui:WindowScope>
+    <sads:DebugSymbol.Symbol>d0lDOlxVc2Vyc1xoeXVuZ3Nvb1xPbmVEcml2ZSAtIFVpUGF0aFx3b3Jrc3BhY2VcRGFpbHlOZXdzXFJlbWVtYmVyVGFzay54YW1sGTkDvAEOAgEBOgW6ARYCAQI6kQI64QICARpAC7cBFgIBA0I8QkICAQREDVIYAgEYUw1iGAIBFmMNdB0CARN1DYMBGAIBEYQBDYgBGwIBDYkBDZcBGAIBC5gBDaYBGAIBCacBDacBVAIBB6gBDbYBGAIBBVCgAVCIAwIBGV+gAV/KAgIBF3JncssBAgEVbztvQAIBFIEBoAGBAekCAgEShgGgAYYB9QECARCEAZ4ChAHUAgIBDpUBoAGVAYkCAgEMpAGgAaQB4gICAQqnAR2nAScCAQi0AaABtAHhAgIBBg==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
+      <sap2010:ViewStateData Id="Click_6" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
+      <sap2010:ViewStateData Id="ClickImage_1" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
+      <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="314.4,135.2" />
+      <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
+      <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="314.4,22.4" />
+      <sap2010:ViewStateData Id="Click_5" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,1352.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="414.4,1500" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="436.8,1624.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RememberTask_1" sap:VirtualizedContainerService.HintSize="240,220.8" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
