@@ -1,7 +1,8 @@
-﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Test_Kakao" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Test_Kakao_1"
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Test_GetProtoImageFromChatLog" mva:VisualBasic.Settings="{x:Null}"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
@@ -54,57 +55,32 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Test_Kakao" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Test_GetProtoImageFromChatLog">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="IsStopRequired" />
+      <Variable x:TypeArguments="s:String[]" Name="SavedFiles" />
     </Sequence.Variables>
-    <DoWhile DisplayName="Do While" sap2010:WorkflowViewState.IdRef="DoWhile_1" Condition="[Not IsStopRequired]">
-      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TryUnlock workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="KakaoTalk\TryUnlock.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_CredentialName">Kakao_Credential</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetChatList workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="KakaoTalk\GetChatList.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_DirName">C:\Temp</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-        <ui:ShouldStop DisplayName="Should Stop" sap2010:WorkflowViewState.IdRef="ShouldStop_1" Result="[IsStopRequired]" />
-      </Sequence>
-    </DoWhile>
-    <sads:DebugSymbol.Symbol>d1xDOlxVc2Vyc1xoeXVuZ3Nvb1xPbmVEcml2ZSAtIFVpUGF0aFx3b3Jrc3BhY2VcS2FrYW9UYWxrQW5kUmVtZW1iZXJcS2FrYW9UYWxrXFRlc3RfS2FrYW8ueGFtbA05A08OAgEBPQVNDwIBAj1bPXECAQ4+B0wSAgEDPwlKFAIBB0sJS30CAQRAC0QjAgELRQtJIwIBCEtoS3oCAQVCUEJgAgENQLwBQNYBAgEMRb4BRdoBAgEKR0lHUAIBCQ==</sads:DebugSymbol.Symbol>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetProtoImageFromChatLog workflow" UnSafe="False" WorkflowFileName="KakaoTalk\GetProtoImageFromChatLog.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FileDir">C:\Temp</InArgument>
+        <OutArgument x:TypeArguments="s:String[]" x:Key="out_SavedFiles">[SavedFiles]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap2010:WorkflowViewState.IdRef>InvokeWorkflowFile_1</sap2010:WorkflowViewState.IdRef>
+    </ui:InvokeWorkflowFile>
+    <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
+    <sads:DebugSymbol.Symbol>d29DOlxVc2Vyc1xoeXVuZ3Nvb1xPbmVEcml2ZSAtIFVpUGF0aFx3b3Jrc3BhY2VcS2FrYW9UYWxrQW5kUmVtZW1iZXJcS2FrYW9UYWxrXFRlc3RfR2V0UHJvdG9JbWFnZUZyb21DaGF0TG9nLnhhbWwFOgNHDgIBAT4FRB0CAQJAQ0BKAgEGPo4BPrcBAgEFQUpBVgIBAw==</sads:DebugSymbol.Symbol>
   </Sequence>
+  <sap2010:WorkflowViewState.IdRef>Test_GetProtoImageFromChatLog_1</sap2010:WorkflowViewState.IdRef>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="314.4,88" />
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_2" sap:VirtualizedContainerService.HintSize="314.4,88" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336.8,340.8">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,212.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ShouldStop_1" sap:VirtualizedContainerService.HintSize="336.8,22.4" />
-      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="359.2,528">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="464,690.4" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="486.4,815.2">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Test_Kakao_1" sap:VirtualizedContainerService.HintSize="526.4,935.2" />
+      <sap2010:ViewStateData Id="Test_GetProtoImageFromChatLog_1" sap:VirtualizedContainerService.HintSize="376.8,332.8" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

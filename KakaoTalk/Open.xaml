@@ -63,7 +63,7 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="카카오톡 실행 및 로그인 하기 &#xA;조건: 스토어에서 다운로드 후 작업표시줄에 고정된 상태여야 함 " DisplayName="Open" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="카카오톡 실행 및 로그인 하기 &#xA;조건: 스토어에서 다운로드 후 작업표시줄에 고정된 상태여야 함 &#xD;&#xA;&#xD;&#xA;pre condition &#xD;&#xA;  - 카카오톡을 마이크로소프트 스토어에서 다운로드 후 작업표시줄에 고정되어야 함 &#xD;&#xA;&#xD;&#xA;Input &#xD;&#xA;  - in_CredentialName:String - 카카오톡 계정 정보 &#xD;&#xA;&#xD;&#xA;outcome &#xD;&#xA;  - 카카오톡이 실행 되어 로그인 됨  " DisplayName="Open" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Username" />
       <Variable x:TypeArguments="ss:SecureString" Name="Password" />
@@ -149,13 +149,8 @@
           <AssemblyReference>System.Xaml</AssemblyReference>
         </sco:Collection>
       </TextExpression.References>
-      <sap2010:WorkflowViewState.ViewStateManager>
-        <sap2010:ViewStateManager>
-          <sap2010:ViewStateData Id="Delay_1" sap2010:WorkflowViewState.IdRef="ViewStateData_1" />
-        </sap2010:ViewStateManager>
-      </sap2010:WorkflowViewState.ViewStateManager>
     </Delay>
-    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - 채팅 목록 선택 " KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - 채팅 목록 선택 " sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
@@ -169,9 +164,8 @@
       <ui:Click.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="fd9da8a1d4e6f078a229565cdbb94f30" Selector="&lt;wnd app='applicationframehost.exe' appid='1CB77C17.17884BE984322_th66h09paefv0!App' title='KakaoTalk' /&gt;&lt;uia automationid='ButtonsListView' cls='ListView' name='Menu items' /&gt;&lt;uia cls='ListViewItem' idx='2' name='KakaoTalk.Lib.ViewModel.HamburgerMenu.BadgeHamburgerItemViewModel' /&gt;" WaitForReady="COMPLETE" />
       </ui:Click.Target>
-      <sap2010:WorkflowViewState.IdRef>Click_3</sap2010:WorkflowViewState.IdRef>
     </ui:Click>
-    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xoeXVuZ3Nvb1xPbmVEcml2ZSAtIFVpUGF0aFx3b3Jrc3BhY2VcS2FrYW9UYWxrQW5kUmVtZW1iZXJcS2FrYW9UYWxrXE9wZW4ueGFtbBQBVgFnAQJCA68BDgIBAUcFVRACARdWBVbTAQIBEFcFWxMCAQxcBWAZAgEIYQVvEAIBBnAFnQENAgEEngEFrQEQAgECU5gBU+cCAgEYVjtWUAIBFVbEAVbQAQIBE1auAVa6AQIBEVmYAVmXAwIBD1elAlexAgIBDV6YAV7PAgIBC1yCAlyOAgIBCW2YAW3IAgIBB3BXcGECAQWqAZgBqgHHAwIBAw==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1ZDOlxVc2Vyc1xoeXVuZ3Nvb1xPbmVEcml2ZSAtIFVpUGF0aFx3b3Jrc3BhY2VcS2FrYW9UYWxrQW5kUmVtZW1iZXJcS2FrYW9UYWxrXE9wZW4ueGFtbBQBVgFnAQJCA6kBDgIBAUcFVRACARdWBVbTAQIBEFcFWxMCAQxcBWAZAgEIYQVvEAIBBnAFmAENAgEEmQEFpwEQAgECU5gBU+cCAgEYVjtWUAIBFVbEAVbQAQIBE1auAVa6AQIBEVmYAVmXAwIBD1elAlexAgIBDV6YAV7PAgIBC1yCAlyOAgIBCW2YAW3IAgIBB3BXcGECAQWlAZgBpQHHAwIBAw==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -180,10 +174,9 @@
       <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="314.4,135.2" />
       <sap2010:ViewStateData Id="TypeSecureText_1" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
       <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
-      <sap2010:ViewStateData Id="ViewStateData_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="314.4,22.4" />
       <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,1033.6">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,1193.6">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -191,7 +184,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Open_1" sap:VirtualizedContainerService.HintSize="376.8,1113.6" />
+      <sap2010:ViewStateData Id="Open_1" sap:VirtualizedContainerService.HintSize="376.8,1273.6" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

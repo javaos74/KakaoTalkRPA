@@ -54,9 +54,9 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="카톡에 친구를 추가하는 절차 &#xD;&#xA;&#xD;&#xA;Input &#xD;&#xA; - in_FriendName : 친구 이름 &#xD;&#xA; - in_PhoneNumber : 전화번호 " DisplayName="KakaoTalk_AddFriend" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence sap2010:Annotation.AnnotationText="카톡에 친구를 추가하는 절차 &#xA;&#xA;Input &#xA; - in_FriendName : 친구 이름 &#xA; - in_PhoneNumber : 전화번호 " DisplayName="KakaoTalk_AddFriend" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence DisplayName="Desktop" sap2010:WorkflowViewState.IdRef="Sequence_2">
-      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'KakaoTalk Applicati'" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="bb3e4f3d8a52f4a51267f70ad47ecca1" Selector="&lt;wnd app='applicationframehost.exe' appid='1CB77C17.17884BE984322_th66h09paefv0!App' title='KakaoTalk' /&gt;">
+      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - 카카오톡에 연결 " sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="bb3e4f3d8a52f4a51267f70ad47ecca1" Selector="&lt;wnd app='applicationframehost.exe' appid='1CB77C17.17884BE984322_th66h09paefv0!App' title='KakaoTalk' /&gt;">
         <ui:WindowScope.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -142,36 +142,36 @@
         </ui:WindowScope.Body>
       </ui:WindowScope>
     </Sequence>
-    <sads:DebugSymbol.Symbol>d2VDOlxVc2Vyc1xoeXVuZ3Nvb1xPbmVEcml2ZSAtIFVpUGF0aFx3b3Jrc3BhY2VcS2FrYW9UYWxrQW5kUmVtZW1iZXJcS2FrYW9UYWxrXEtha2FvVGFsa19BZGRGcmllbmQueGFtbCE5A5IBDgIBAToFkAEQAgECOwePARgCAQM7lgI7hwMCASFBDYwBGAIBBEIPSRoCAR1KD2EfAgEWYg95HwIBD3oPfh0CAQx/D4MBHQIBCYQBD4sBGgIBBUeiAUeSAgIBIEQ7RD8CAR9ELkQyAgEeWxNfLAIBG1AVVyACARdzE3csAgEUaBVvIAIBEHyiAXz1AQIBDnqtAnqyAgIBDYEBogGBAfoBAgELf68Cf7wCAgEKiQGiAYkB5wECAQiGATyGAUACAQeGAS6GATMCAQZdpgFd1wECARxVqAFVxAECARpSQVJFAgEZUjRSOAIBGHWmAXXoAQIBFW2oAW3HAQIBE2pBakQCARJqNGo4AgER</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1tDOlxVc2Vyc1xoeXVuZ3Nvb1xPbmVEcml2ZSAtIFVpUGF0aFx3b3Jrc3BhY2VcS2FrYW9UYWxrQW5kUmVtZW1iZXJcS2FrYW9UYWxrXEFkZEZyaWVuZC54YW1sITkDkgEOAgEBOgWQARACAQI7B48BGAIBAzuMAjv9AgIBIUENjAEYAgEEQg9JGgIBHUoPYR8CARZiD3kfAgEPeg9+HQIBDH8PgwEdAgEJhAEPiwEaAgEFR6IBR5ICAgEgRDtEPwIBH0QuRDICAR5bE18sAgEbUBVXIAIBF3MTdywCARRoFW8gAgEQfKIBfPUBAgEOeq0CerICAgENgQGiAYEB+gECAQt/rwJ/vAICAQqJAaIBiQHnAQIBCIYBPIYBQAIBB4YBLoYBMwIBBl2mAV3XAQIBHFWoAVXEAQIBGlJBUkUCARlSNFI4AgEYdaYBdegBAgEVbagBbccBAgETakFqRAIBEmo0ajgCARE=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="707.2,107.2" />
-      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
-      <sap2010:ViewStateData Id="WaitUiElementAppear_1" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
-      <sap2010:ViewStateData Id="AnchorBase_1" sap:VirtualizedContainerService.HintSize="707.2,200" />
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="707,106" />
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="WaitUiElementAppear_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="AnchorBase_1" sap:VirtualizedContainerService.HintSize="707,198" />
       <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
-      <sap2010:ViewStateData Id="WaitUiElementAppear_2" sap:VirtualizedContainerService.HintSize="314.4,107.2" />
-      <sap2010:ViewStateData Id="AnchorBase_2" sap:VirtualizedContainerService.HintSize="707.2,395.2" />
+      <sap2010:ViewStateData Id="WaitUiElementAppear_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="AnchorBase_2" sap:VirtualizedContainerService.HintSize="707,393" />
       <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="707.2,135.2" />
       <sap2010:ViewStateData Id="TypeInto_2" sap:VirtualizedContainerService.HintSize="707.2,135.2" />
       <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="707.2,107.2" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="729.6,1404.8">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="729,1398">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="744,1552" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="766.4,1676.8">
+      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="743,1544" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="765,1668">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="788.8,1893.6">
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="787,1879">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -179,7 +179,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="KakaoTalk_AddFriend_1" sap:VirtualizedContainerService.HintSize="828.8,2013.6" />
+      <sap2010:ViewStateData Id="KakaoTalk_AddFriend_1" sap:VirtualizedContainerService.HintSize="827,1959" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
