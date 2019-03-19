@@ -1,5 +1,5 @@
 {
-  "name": "KakaoTalkAndRemember",
+  "name": "EventAppWithKakaoTalk",
   "description": "Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
@@ -8,7 +8,8 @@
     "UiPath.Mail.Activities": "[1.3.0]",
     "UiPath.Excel.Activities": "[2.5.2]",
     "UiPath.System.Activities": "[19.2.0]",
-    "UiPath.UIAutomation.Activities": "[19.2.0]"
+    "UiPath.UIAutomation.Activities": "[19.2.0]",
+    "UiPath.Cognitive.Activities": "[2.2.0]"
   },
   "schemaVersion": "3.2",
   "studioVersion": "18.4.1.0",

@@ -1,4 +1,4 @@
-﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Test1" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Test1_1"
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Test_AddFriend" mva:VisualBasic.Settings="{x:Null}"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
@@ -7,6 +7,7 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
@@ -32,6 +33,7 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -50,45 +52,44 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
-      <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
-      <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Test1" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Test_AddFriend">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="FilePath" />
+      <Variable x:TypeArguments="sd:DataTable" Name="AddrDT" />
     </Sequence.Variables>
-    <Assign>
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[FilePath]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Path.Combine( "C:\Temp", "부산UiPath세션_20190312.jpg")]</InArgument>
-      </Assign.Value>
-      <sap2010:WorkflowViewState.IdRef>Assign_1</sap2010:WorkflowViewState.IdRef>
-    </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" Text="[FilePath]" TopMost="True" sap2010:WorkflowViewState.IdRef="MessageBox_1" />
-    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xoeXVuZ3Nvb1xXb3Jrc3BhY2VzXE15d29ya1xLYWthb1RhbGtcVGVzdFxUZXN0MS54YW1sBkADTw4CAQFEBUwOAgEFTQVNuAECAQJJMEllAgEIRjFGOwIBBk1rTXcCAQM=</sads:DebugSymbol.Symbol>
+    <ui:ReadRange AddHeaders="True" DataTable="[AddrDT]" DisplayName="Read Range" SheetName="Sheet1" WorkbookPath="Data\AddressbookUiPath.xlsx">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+      <sap2010:WorkflowViewState.IdRef>ReadRange_1</sap2010:WorkflowViewState.IdRef>
+    </ui:ReadRange>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AddFriends workflow" UnSafe="False" WorkflowFileName="KakaoTalk\AddFriends.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_AddressBook">[AddrDT]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap2010:WorkflowViewState.IdRef>InvokeWorkflowFile_1</sap2010:WorkflowViewState.IdRef>
+    </ui:InvokeWorkflowFile>
+    <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
+    <sads:DebugSymbol.Symbol>d0tDOlxVc2Vyc1xoeXVuZ3Nvb1xXb3Jrc3BhY2VzXE15d29ya1xLYWthb1RhbGtcS2FrYW9UYWxrXFRlc3RfQWRkRnJpZW5kLnhhbWwJOwNPDgIBAT8FRhQCAQZHBUwdAgECPy8/OQIBCkILQjoCAQk/XT9lAgEIP3M/kAECAQdJS0lTAgEER4ABR5sBAgED</sads:DebugSymbol.Symbol>
   </Sequence>
+  <sap2010:WorkflowViewState.IdRef>Test_AddFriend_1</sap2010:WorkflowViewState.IdRef>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="314.4,60" />
-      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="314.4,60" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,284.8">
+      <sap2010:ViewStateData Id="ReadRange_1" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,340.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Test1_1" sap:VirtualizedContainerService.HintSize="376.8,364.8" />
+      <sap2010:ViewStateData Id="Test_AddFriend_1" sap:VirtualizedContainerService.HintSize="376.8,460.8" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

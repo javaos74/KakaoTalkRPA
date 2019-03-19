@@ -1,4 +1,4 @@
-﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Test1" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Test1_1"
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Test_GetReponse" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Test_GetReponse_1"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
@@ -50,45 +50,33 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
-      <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
-      <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Test1" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Test_GetReponse" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="FilePath" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="Response" />
     </Sequence.Variables>
-    <Assign>
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[FilePath]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Path.Combine( "C:\Temp", "부산UiPath세션_20190312.jpg")]</InArgument>
-      </Assign.Value>
-      <sap2010:WorkflowViewState.IdRef>Assign_1</sap2010:WorkflowViewState.IdRef>
-    </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" Text="[FilePath]" TopMost="True" sap2010:WorkflowViewState.IdRef="MessageBox_1" />
-    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xoeXVuZ3Nvb1xXb3Jrc3BhY2VzXE15d29ya1xLYWthb1RhbGtcVGVzdFxUZXN0MS54YW1sBkADTw4CAQFEBUwOAgEFTQVNuAECAQJJMEllAgEIRjFGOwIBBk1rTXcCAQM=</sads:DebugSymbol.Symbol>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetResponseWithQuestion workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="KakaoTalk\GetResponseWithQuestion.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Question">오전 세션 어떠셨나요?</InArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_Responses">[Response]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <sads:DebugSymbol.Symbol>d0xDOlxVc2Vyc1xoeXVuZ3Nvb1xXb3Jrc3BhY2VzXE15d29ya1xLYWthb1RhbGtcS2FrYW9UYWxrXFRlc3RfR2V0UmVwb25zZS54YW1sBTkDRA4CAQE9BUIdAgECP0Q/UAIBBkBRQFsCAQQ9xAE97AECAQM=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="314.4,60" />
-      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="314.4,60" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,284.8">
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,211">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Test1_1" sap:VirtualizedContainerService.HintSize="376.8,364.8" />
+      <sap2010:ViewStateData Id="Test_GetReponse_1" sap:VirtualizedContainerService.HintSize="376,331" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

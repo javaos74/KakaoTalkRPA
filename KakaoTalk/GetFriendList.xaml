@@ -66,12 +66,11 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="친구 목록을 가져온다.&#xD;&#xA;친구 탭을 선택하면  내프로토콜, 새로운 친구, 즐겨찾기 부분은 제외하고 오직 친구만 가져오도록 구현하다.&#xD;&#xA;&#xD;&#xA;Input &#xD;&#xA;  - in_FriendName:String - 친구이름이 있으면 해당 이름에 매핑하는 친구만 검색 함, 없으면 전체 리스트  &#xD;&#xA;&#xD;&#xA;Output&#xD;&#xA;  - out_FriendList : List&lt;String&gt; - 친구 리스트 (이름이 중복될수 있음, 단 Emtpy String 은 제외 함) &#xD;&#xA;" DisplayName="GetFriendList" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="친구 목록을 가져온다.&#xA;친구 탭을 선택하면  내프로토콜, 새로운 친구, 즐겨찾기 부분은 제외하고 오직 친구만 가져오도록 구현하다.&#xA;&#xA;Input &#xA;  - in_FriendName:String - 친구이름이 있으면 해당 이름에 매핑하는 친구만 검색 함, 없으면 전체 리스트  &#xA;&#xA;Output&#xA;  - out_FriendList : List&lt;String&gt; - 친구 리스트 (이름이 중복될수 있음, 단 Emtpy String 은 제외 함) &#xA;" DisplayName="GetFriendList" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="FriendSections" />
       <Variable x:TypeArguments="ui:UiElement" Name="FriendSection" />
@@ -84,6 +83,22 @@
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
           <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="91df3bc13a2ce9840222b6c6d7d7ab21" Selector="&lt;uia automationid='ButtonsListView' cls='ListView' name='Menu items' /&gt;&lt;uia cls='Image' idx='1' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+              <sap2010:WorkflowViewState.IdRef>Click_1</sap2010:WorkflowViewState.IdRef>
+            </ui:Click>
             <If Condition="[Not String.IsNullOrEmpty ( in_FriendName)]" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into - 친구이름 입력 " EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="True" Text="[in_FriendName]">
@@ -163,15 +178,16 @@
         </ActivityAction>
       </ui:WindowScope.Body>
     </ui:WindowScope>
-    <sads:DebugSymbol.Symbol>d19DOlxVc2Vyc1xoeXVuZ3Nvb1xPbmVEcml2ZSAtIFVpUGF0aFx3b3Jrc3BhY2VcS2FrYW9UYWxrQW5kUmVtZW1iZXJcS2FrYW9UYWxrXEdldEZyaWVuZExpc3QueGFtbCpKA6cBDgIBAVAFpQEWAgECUIoCUPsCAgEyVguiARYCAQNXDV8SAgErYA1kHwIBJ2UNZb8BAgElZg1tFgIBIW4NdRYCAR12DXofAgEYew17vQECARZ8DaEBGgIBBFcbV0gCASxZEV0fAgEuYqABYuMBAgEqYGVgjQECASlgJ2A5AgEoZXtlvAECASZrPGtRAgEkaD1oTAIBInNCc1kCASBwQ3BTAgEedmV2hwECARx4Z3h4AgEadid2MgIBGXt6e7oBAgEXfJwBfKcBAgEVggETngEeAgEFW6QBW+4BAgExWaQCWbUCAgEvhwEViwEnAgEQjAEVkwEeAgEMlAEVnQEaAgEGhwFxhwGQAQIBFIkBb4kBdwIBEocBL4cBOwIBEZEBRJEBVAIBD44BRY4BUQIBDZQBI5QBcAIBB5YBGZsBKAIBCJgBTpgBXgIBCpoBQpoBaAIBCQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0pDOlxVc2Vyc1xoeXVuZ3Nvb1xXb3Jrc3BhY2VzXE15d29ya1xLYWthb1RhbGtcS2FrYW9UYWxrXEdldEZyaWVuZExpc3QueGFtbCxJA7YBDgIBAU8FtAEWAgECT4oCT/sCAgE0VQuxARYCAQNWDWUYAgEyZg1uEgIBK28Ncx8CASd0DXS/AQIBJXUNfBYCASF9DYQBFgIBHYUBDYkBHwIBGIoBDYoBvQECARaLAQ2wARoCAQRioAFikAICATNmG2ZIAgEsaBFsHwIBLnGgAXHjAQIBKm9lb40BAgEpbydvOQIBKHR7dLwBAgEmejx6UQIBJHc9d0wCASKCAUKCAVkCASB/Q39TAgEehQFlhQGHAQIBHIcBZ4cBeAIBGoUBJ4UBMgIBGYoBeooBugECAReLAZwBiwGnAQIBFZEBE60BHgIBBWqkAWruAQIBMWikAmi1AgIBL5YBFZoBJwIBEJsBFaIBHgIBDKMBFawBGgIBBpYBcZYBkAECARSYAW+YAXcCARKWAS+WATsCARGgAUSgAVQCAQ+dAUWdAVECAQ2jASOjAXACAQelARmqASgCAQinAU6nAV4CAQqpAUKpAWgCAQk=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="314,134" />
-      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="502,281" />
-      <sap2010:ViewStateData Id="FindChildren_1" sap:VirtualizedContainerService.HintSize="502,106" />
-      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="502,91" />
-      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="502,60" />
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="502.4,107.2" />
+      <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="314.4,135.2" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="502.4,284.8" />
+      <sap2010:ViewStateData Id="FindChildren_1" sap:VirtualizedContainerService.HintSize="502.4,107.2" />
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="502.4,92.8" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="502.4,60" />
       <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="502,60" />
       <sap2010:ViewStateData Id="FindChildren_2" sap:VirtualizedContainerService.HintSize="502,68" />
       <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="502,91" />
@@ -187,15 +203,15 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="502,745" />
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="524,1906">
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="524.8,2060.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="538,2052" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="560,2368">
+      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="539.2,2208" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="561.6,2536.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -203,7 +219,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="GetFriendList_1" sap:VirtualizedContainerService.HintSize="600,2488" />
+      <sap2010:ViewStateData Id="GetFriendList_1" sap:VirtualizedContainerService.HintSize="601.6,2616.8" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

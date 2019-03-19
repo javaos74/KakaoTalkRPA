@@ -1,0 +1,641 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="GetResponseWithQuestion"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Question" Type="InArgument(x:String)" />
+    <x:Property Name="out_Responses" Type="OutArgument(scg:List(x:String))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>GetResponseWithQuestion_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="질문을 보내고 응답을 체크한다. &#xD;&#xA;보낸 질문 이후에 응답한 내용에 대해서만 응답으로 처리하고 마지막 문장(?)에 대해서 분석 한다. &#xD;&#xA;&#xD;&#xA;Input &#xD;&#xA;  - in_Question: String - 질문 문장 (이 기준으로 비교 함) &#xD;&#xA;&#xD;&#xA;Output&#xD;&#xA;  - out_Responses: List&lt;String&gt; - 질문에 대한 응답/답변 " DisplayName="GetResponseWithQuestion" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - 카카오톡에 연결" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="9820c9c40ff5b42fdc14e1ceb74180b2" Selector="&lt;wnd app='applicationframehost.exe' appid='1CB77C17.17884BE984322_th66h09paefv0!App' title='KakaoTalk' /&gt;">
+      <ui:WindowScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence sap2010:Annotation.AnnotationText="전체 채팅방을 조회 하면서 질문 이후에 받은 응답만 수집 " DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="Chats" />
+              <Variable x:TypeArguments="scg:List(x:String)" Default="[New List( Of String)]" Name="Responses" />
+              <Variable x:TypeArguments="x:Int32" Name="ChatIndex" />
+              <Variable x:TypeArguments="x:Int32" Name="CurIndex" />
+            </Sequence.Variables>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - 채팅목록 선택 " sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5d9deb31c8c4e7fb212a9dbc670ae003" Selector="&lt;uia automationid='ButtonsListView' cls='ListView' name='Menu items' /&gt;&lt;uia cls='ListViewItem' idx='2' name='KakaoTalk.Lib.ViewModel.HamburgerMenu.BadgeHamburgerItemViewModel' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:FindChildren Children="[Chats]" DisplayName="Find Children - 채팅목록 리스트 업" Filter="&lt;uia cls='ListViewItem' /&gt;" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_CHILDREN">
+              <ui:FindChildren.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="524d508582e66e983e623a2f80fff7e6" Selector="&lt;uia automationid='ChatRoomListView' cls='ListView' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:FindChildren.Target>
+            </ui:FindChildren>
+            <Sequence DisplayName="Sequence - 처음으로 이동 " sap2010:WorkflowViewState.IdRef="Sequence_11">
+              <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[Chats]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="ui:UiElement">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ui:UiElement" Name="item" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <If Condition="[item.Get(&quot;relativeVisibility&quot;).ToString = Boolean.TrueString]" DisplayName="If - 선택하는 항목이면 더블클릭 후 HOME키 " sap2010:WorkflowViewState.IdRef="If_7">
+                        <If.Then>
+                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Double Click" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[item]" WaitForReady="INTERACTIVE" />
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send Hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="home" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+                              <ui:SendHotkey.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[item]" WaitForReady="INTERACTIVE" />
+                              </ui:SendHotkey.Target>
+                            </ui:SendHotkey>
+                            <ui:Break sap2010:WorkflowViewState.IdRef="Break_5" />
+                          </Sequence>
+                        </If.Then>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+            </Sequence>
+            <ui:FindChildren Children="[Chats]" DisplayName="Find Children - 채팅목록 리스트 업" Filter="&lt;uia cls='ListViewItem' /&gt;" sap2010:WorkflowViewState.IdRef="FindChildren_4" Scope="FIND_CHILDREN">
+              <ui:FindChildren.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="524d508582e66e983e623a2f80fff7e6" Selector="&lt;uia automationid='ChatRoomListView' cls='ListView' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:FindChildren.Target>
+            </ui:FindChildren>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[CurIndex]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;처음 채팅방 부터 시작 ... &quot;)]" />
+            <DoWhile DisplayName="Do While" sap2010:WorkflowViewState.IdRef="DoWhile_1" Condition="[CurIndex &lt; Chats.Count]">
+              <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="ChatLogs" />
+                  <Variable x:TypeArguments="x:Int32" Name="LogIndex" />
+                  <Variable x:TypeArguments="x:Boolean" Name="FoundQuestion" />
+                  <Variable x:TypeArguments="ui:UiElement" Name="item" />
+                  <Variable x:TypeArguments="x:Boolean" Name="FoundAnswer" />
+                </Sequence.Variables>
+                <Assign DisplayName="Assign - 항목 선택 " sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="ui:UiElement">[item]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="ui:UiElement">[Chats.ElementAt(CurIndex)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[CurIndex + 1 &lt; Chats.Count AndAlso Chats.ElementAt( CurIndex +1).Get(&quot;relativeVisibility&quot;).ToString = Boolean.FalseString]" DisplayName="If - 다음번 항목이 가려져 있다면 " sap2010:WorkflowViewState.IdRef="If_13">
+                  <If.Then>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_19">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="ui:UiElement" Name="NextItem" />
+                      </Sequence.Variables>
+                      <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send Hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="down" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+                        <ui:SendHotkey.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[item]" WaitForReady="INTERACTIVE" />
+                        </ui:SendHotkey.Target>
+                      </ui:SendHotkey>
+                      <ui:FindChildren Children="[Chats]" DisplayName="Find Children - 채팅목록 리스트 업" Filter="&lt;uia cls='ListViewItem' /&gt;" sap2010:WorkflowViewState.IdRef="FindChildren_5" Scope="FIND_CHILDREN">
+                        <ui:FindChildren.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="524d508582e66e983e623a2f80fff7e6" Selector="&lt;uia automationid='ChatRoomListView' cls='ListView' /&gt;" WaitForReady="INTERACTIVE" />
+                        </ui:FindChildren.Target>
+                      </ui:FindChildren>
+                    </Sequence>
+                  </If.Then>
+                </If>
+                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Double Click" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[item]" WaitForReady="INTERACTIVE" />
+                  </ui:Click.Target>
+                </ui:Click>
+                <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send Hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="down" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+                  <ui:SendHotkey.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[item]" WaitForReady="INTERACTIVE" />
+                  </ui:SendHotkey.Target>
+                </ui:SendHotkey>
+                <ui:FindChildren Children="[ChatLogs]" DisplayName="Find Children - 채팅 로그 목록 " Filter="&lt;uia cls='ListViewItem' /&gt;" sap2010:WorkflowViewState.IdRef="FindChildren_6" Scope="FIND_CHILDREN">
+                  <ui:FindChildren.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="406a27e8b59f3a0aaf6eba24febb7be3" Selector="&lt;uia automationid='chatLogView' cls='ListView' /&gt;" WaitForReady="INTERACTIVE" />
+                  </ui:FindChildren.Target>
+                </ui:FindChildren>
+                <Assign DisplayName="Assign - 해당 질문을 찾았는지 " sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[FoundQuestion]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign - 응답을 찾고 다음 채팅으로 ">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[FoundAnswer]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                  </Assign.Value>
+                  <sap2010:WorkflowViewState.IdRef>Assign_11</sap2010:WorkflowViewState.IdRef>
+                </Assign>
+                <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="[LogIndex]" DisplayName="For Each - 챗로그(문장) 리스트 " sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[ChatLogs]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="ui:UiElement">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="ui:UiElement" Name="log" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="TextMessages" />
+                        </Sequence.Variables>
+                        <ui:FindChildren Children="[TextMessages]" ContinueOnError="True" DisplayName="Find Children" Filter="&lt;uia cls='RichTextBlock' /&gt;" sap2010:WorkflowViewState.IdRef="FindChildren_7" Scope="FIND_CHILDREN">
+                          <ui:FindChildren.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[log]" TimeoutMS="1000" WaitForReady="INTERACTIVE" />
+                          </ui:FindChildren.Target>
+                        </ui:FindChildren>
+                        <If Condition="[TextMessages is Nothing]" DisplayName="If - RichTextBlock이 없다면 " sap2010:WorkflowViewState.IdRef="If_9">
+                          <If.Then>
+                            <ui:Continue sap2010:WorkflowViewState.IdRef="Continue_2" />
+                          </If.Then>
+                        </If>
+                        <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[TextMessages]">
+                          <ui:ForEach.Body>
+                            <ActivityAction x:TypeArguments="ui:UiElement">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:UiElement" Name="msg" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                <If Condition="[FoundQuestion]" DisplayName="If - 질문을 찾았다면 " sap2010:WorkflowViewState.IdRef="If_10">
+                                  <If.Then>
+                                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                      <InvokeMethod DisplayName="Invoke Method" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+                                        <InvokeMethod.TargetObject>
+                                          <InArgument x:TypeArguments="scg:List(x:String)">[Responses]</InArgument>
+                                        </InvokeMethod.TargetObject>
+                                        <InArgument x:TypeArguments="x:String">[msg.Get("name").ToString]</InArgument>
+                                      </InvokeMethod>
+                                      <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;답변 : {0}&quot;, msg.Get(&quot;name&quot;).ToString)]" />
+                                      <ui:Break sap2010:WorkflowViewState.IdRef="Break_3" />
+                                    </Sequence>
+                                  </If.Then>
+                                </If>
+                                <If Condition="[msg.Get(&quot;name&quot;).ToString.StartsWith( in_Question)]" DisplayName="If - 질문 찾기 " sap2010:WorkflowViewState.IdRef="If_11">
+                                  <If.Then>
+                                    <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[FoundQuestion]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </If.Then>
+                                </If>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEach.Body>
+                        </ui:ForEach>
+                        <If Condition="[FoundAnswer]" DisplayName="If - 찾았다면 루프 빠져나오기 " sap2010:WorkflowViewState.IdRef="If_12">
+                          <If.Then>
+                            <ui:Break sap2010:WorkflowViewState.IdRef="Break_4" />
+                          </If.Then>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[CurIndex]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[CurIndex + 1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </DoWhile>
+            <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="[ChatIndex]" DisplayName="For Each - 목록에서 개별 항목 선택 " sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Chats]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="ui:UiElement">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="ui:UiElement" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="ChatLogs" />
+                            <Variable x:TypeArguments="x:Int32" Name="LogIndex" />
+                            <Variable x:TypeArguments="x:Boolean" Name="Found" />
+                          </Sequence.Variables>
+                          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Double Click" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[item]" WaitForReady="INTERACTIVE" />
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send Hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="down" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+                            <ui:SendHotkey.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                            </ui:SendHotkey.Target>
+                          </ui:SendHotkey>
+                          <ui:FindChildren Children="[ChatLogs]" DisplayName="Find Children - 채팅 로그 목록 " Filter="&lt;uia cls='ListViewItem' /&gt;" sap2010:WorkflowViewState.IdRef="FindChildren_2" Scope="FIND_CHILDREN">
+                            <ui:FindChildren.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="406a27e8b59f3a0aaf6eba24febb7be3" Selector="&lt;uia automationid='chatLogView' cls='ListView' /&gt;" WaitForReady="INTERACTIVE" />
+                            </ui:FindChildren.Target>
+                          </ui:FindChildren>
+                          <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[Found]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="[LogIndex]" DisplayName="For Each - 챗로그(문장) 리스트 " sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ChatLogs]">
+                            <ui:ForEach.Body>
+                              <ActivityAction x:TypeArguments="ui:UiElement">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="ui:UiElement" Name="log" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="TextMessages" />
+                                  </Sequence.Variables>
+                                  <ui:FindChildren Children="[TextMessages]" DisplayName="Find Children" Filter="&lt;uia cls='RichTextBlock' /&gt;" sap2010:WorkflowViewState.IdRef="FindChildren_3" Scope="FIND_CHILDREN">
+                                    <ui:FindChildren.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Element="[log]" WaitForReady="INTERACTIVE" />
+                                    </ui:FindChildren.Target>
+                                  </ui:FindChildren>
+                                  <If Condition="[TextMessages is Nothing]" DisplayName="If - RichTextBlock이 없다면 " sap2010:WorkflowViewState.IdRef="If_4">
+                                    <If.Then>
+                                      <ui:Continue sap2010:WorkflowViewState.IdRef="Continue_1" />
+                                    </If.Then>
+                                  </If>
+                                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[TextMessages]">
+                                    <ui:ForEach.Body>
+                                      <ActivityAction x:TypeArguments="ui:UiElement">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="ui:UiElement" Name="msg" />
+                                        </ActivityAction.Argument>
+                                        <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                          <If Condition="[Found]" DisplayName="If - 질문을 찾았다면 " sap2010:WorkflowViewState.IdRef="If_3">
+                                            <If.Then>
+                                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                                <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;답변 : {0}&quot;, msg.Get(&quot;name&quot;).ToString)]" />
+                                                <ui:Break sap2010:WorkflowViewState.IdRef="Break_1" />
+                                              </Sequence>
+                                            </If.Then>
+                                          </If>
+                                          <If Condition="[msg.Get(&quot;name&quot;).ToString.StartsWith( in_Question)]" DisplayName="If - 질문 찾기 " sap2010:WorkflowViewState.IdRef="If_2">
+                                            <If.Then>
+                                              <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Boolean">[Found]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </If.Then>
+                                          </If>
+                                        </Sequence>
+                                      </ActivityAction>
+                                    </ui:ForEach.Body>
+                                  </ui:ForEach>
+                                  <If Condition="[Found]" DisplayName="If - 찾았다면 루프 빠져나오기 " sap2010:WorkflowViewState.IdRef="If_5">
+                                    <If.Then>
+                                      <ui:Break sap2010:WorkflowViewState.IdRef="Break_2" />
+                                    </If.Then>
+                                  </If>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ForEach.Body>
+                          </ui:ForEach>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                  </ui:ForEach>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <Assign DisplayName="Assign - 결과 전달 " sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[out_Responses]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[Responses]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:WindowScope.Body>
+    </ui:WindowScope>
+    <sads:DebugSymbol.Symbol>d1RDOlxVc2Vyc1xoeXVuZ3Nvb1xXb3Jrc3BhY2VzXE15d29ya1xLYWthb1RhbGtcS2FrYW9UYWxrXEdldFJlc3BvbnNlV2l0aFF1ZXN0aW9uLnhhbWxoSwO9Aw4CAQFMBbsDFgIBAkyJAkz6AgIBe1ILuAMWAgEDVUZVXgIBBFkNZxgCAXloDWwfAgF1bQ2UARgCAWaVAQ2ZAR8CAWKaAQ2hARYCAV6iAQ2iAa0BAgFcowENvAIXAgELvQINrwMdAgEKsAMNtwMWAgEFZaABZeACAgF6aqABat4BAgF4aGFogwECAXdoJ2gwAgF2bg+TARwCAWeXAaABlwHeAQIBZZUBYZUBgwECAWSVASeVATACAWOfATefATgCAWGcATicAUICAV+iAXqiAaoBAgFdowFjowGAAQIBW6QBD7sCGgIBDLUDQrUDTQIBCLIDQ7IDUgIBBm6eAW6nAQIBdHQVkAEgAgForAERswEaAgFXtAERxgEWAgFMxwER1QEcAgFJ1gER2gEhAgFF2wER3wEjAgFB4AER5wEaAgE96AER8AEaAgE58QERsgIeAgESswIRugIaAgENdRePARwCAWmxAUCxAVsCAVquAUGuAUcCAVi0AR+0AakBAgFNtgEVxAEgAgFO0wFr0wFzAgFK2AFr2AFzAgFH1gHwAdYB9gECAUbdAaQB3QHdAQIBRNsBZ9sBiQECAUPbASvbATcCAULlAT3lAUICAUDiAT7iAU0CAT7tAT3tAUICATzqAT7qAUsCATrxAbEB8QG9AQIBOPEBSfEBVQIBNvcBF68CIgIBE7gCO7gCSQIBELUCPLUCRgIBDnUldW8CAWp3G40BJgIBa7oBF74BJwIBU78BF8MBKQIBT/sBGf8BKwIBL4ACGYQCHgIBLIUCGakCJgIBGKoCGa4CHgIBFHgdhgEoAgFxhwEdiwEtAgFtjAEdjAFTAgFsvAFxvAF5AgFVugH2AboB/AECAVTBAaoBwQHoAQIBUr8Ba78BjQECAVG/ATG/AToCAVD9AXD9AXYCATX7AVT7AVoCATT7AX77AaEBAgEz/QFe/QFlAgEx+wEz+wFDAgEwgAIngAJCAgEtggIdggJZAgEuhQKoAYUCuAECASuLAh+mAioCARmqAieqAjYCARWsAh2sAlMCAReEAXeEAX8CAXKJAXeJAX8CAW+HAfwBhwGCAgIBbowCIZkCJgIBIJoCIaUCJgIBGowCL4wCQAIBIY4CJZcCMAIBI5oCL5oCbgIBG5wCJaMCLgIBHI8CJ5QCNgIBJ5UCJ5UC4gECASWWAieWAl0CASShAlGhAlUCAR+eAlKeAmECAR2RAlyRAmcCASmTAlCTAmoCASiVApQBlQLfAQIBJg==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="588,106" />
+      <sap2010:ViewStateData Id="FindChildren_1" sap:VirtualizedContainerService.HintSize="588,106" />
+      <sap2010:ViewStateData Id="Click_5" sap:VirtualizedContainerService.HintSize="314,68" />
+      <sap2010:ViewStateData Id="SendHotkey_2" sap:VirtualizedContainerService.HintSize="314,116" />
+      <sap2010:ViewStateData Id="Break_5" sap:VirtualizedContainerService.HintSize="314,22" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="336,410">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_7" sap:VirtualizedContainerService.HintSize="464,557" />
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="486,681">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_4" sap:VirtualizedContainerService.HintSize="502,814" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="588,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FindChildren_4" sap:VirtualizedContainerService.HintSize="588,106" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="588,60" />
+      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="588,91" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="540,60" />
+      <sap2010:ViewStateData Id="SendHotkey_5" sap:VirtualizedContainerService.HintSize="314,116" />
+      <sap2010:ViewStateData Id="FindChildren_5" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_19" sap:VirtualizedContainerService.HintSize="336,386">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_13" sap:VirtualizedContainerService.HintSize="540,533" />
+      <sap2010:ViewStateData Id="Click_7" sap:VirtualizedContainerService.HintSize="540,68" />
+      <sap2010:ViewStateData Id="SendHotkey_4" sap:VirtualizedContainerService.HintSize="540,116" />
+      <sap2010:ViewStateData Id="FindChildren_6" sap:VirtualizedContainerService.HintSize="540,106" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="540,60" />
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="540,60" />
+      <sap2010:ViewStateData Id="FindChildren_7" sap:VirtualizedContainerService.HintSize="502,68" />
+      <sap2010:ViewStateData Id="Continue_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_9" sap:VirtualizedContainerService.HintSize="502,207" />
+      <sap2010:ViewStateData Id="InvokeMethod_1" sap:VirtualizedContainerService.HintSize="314,133" />
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="Break_3" sap:VirtualizedContainerService.HintSize="314,22" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="336,450">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_10" sap:VirtualizedContainerService.HintSize="464,597" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="If_11" sap:VirtualizedContainerService.HintSize="464,207" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="486,968">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_5" sap:VirtualizedContainerService.HintSize="502,1101">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Break_4" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_12" sap:VirtualizedContainerService.HintSize="502,207" />
+      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="524,1827">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="540,1960" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="540,60" />
+      <sap2010:ViewStateData Id="Sequence_15" sap:VirtualizedContainerService.HintSize="562,3467">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="588,3628" />
+      <sap2010:ViewStateData Id="Click_6" sap:VirtualizedContainerService.HintSize="502,68" />
+      <sap2010:ViewStateData Id="SendHotkey_3" sap:VirtualizedContainerService.HintSize="502,116" />
+      <sap2010:ViewStateData Id="FindChildren_2" sap:VirtualizedContainerService.HintSize="502,106" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="502,60" />
+      <sap2010:ViewStateData Id="FindChildren_3" sap:VirtualizedContainerService.HintSize="464,68" />
+      <sap2010:ViewStateData Id="Continue_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_4" sap:VirtualizedContainerService.HintSize="464,207" />
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="Break_1" sap:VirtualizedContainerService.HintSize="314,22" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="336,277">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="464,425" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="464,208" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="486,797">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_3" sap:VirtualizedContainerService.HintSize="464,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Break_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_5" sap:VirtualizedContainerService.HintSize="464,207" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="486,777">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_2" sap:VirtualizedContainerService.HintSize="502,910" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="524,1544">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="540,1677">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_16" sap:VirtualizedContainerService.HintSize="562,1801">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_2" sap:VirtualizedContainerService.HintSize="550,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="550,60" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="610,4730">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="624,4876" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="646,5132">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetResponseWithQuestion_1" sap:VirtualizedContainerService.HintSize="648,4031" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
